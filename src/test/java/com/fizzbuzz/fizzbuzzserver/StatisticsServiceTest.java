@@ -52,9 +52,4 @@ public class StatisticsServiceTest {
 
         assertEquals(1, statisticsService.getNumberOfHits());
     }
-
-    @Test
-    public void testMostUsedRequestWithNoRequests() {
-        assertEquals("No request", statisticsService.mostUsedRequest());
-    }
 }

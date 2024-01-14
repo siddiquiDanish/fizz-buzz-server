@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,9 +23,9 @@ public class FizzBuzzController {
     @Autowired
     StatisticsService statisticsService;
 
-    private static final Logger logger = LoggerFactory.getLogger(FizzBuzzController.class);
+    private static final Logger log = LoggerFactory.getLogger(FizzBuzzController.class);
 
-    @GetMapping(value = "fizzbuzz", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/fizzbuzz", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<String>> fizzBuzz(
             @RequestParam(required = true) int int1,
             @RequestParam(required = true) int int2,
@@ -46,8 +43,8 @@ public class FizzBuzzController {
         reqMap.put("String1", str1);
         reqMap.put("String2", str2);
         statisticsService.updateStatistics(requestParametersKey, reqMap);
+        log.debug("fizzBuzz() : request completed.");
         return ResponseEntity.ok(result);
-
     }
 
     @GetMapping("/statistics")
@@ -58,8 +55,9 @@ public class FizzBuzzController {
         statistics.put("mostUsedRequestParameters",
                 mostUsedReq != null ?
                         mostUsedReq : "No request recieved yet");
-        statistics.put("mostUsedReqHitCount", mostUsedReqHitCount != null ?
+        statistics.put("mostUsedRequest-hitCount", mostUsedReqHitCount != null ?
                 mostUsedReqHitCount : 0);
+        log.debug("getStatistics() : request completed.");
         return ResponseEntity.ok(statistics);
     }
 
