@@ -14,12 +14,18 @@ The application is built using Maven and follows the standard project structure 
 * **GET** - /api/fizzbuzz
 * **GET** - /api/statistics
 
-### **Requirements**
-1. [ ] Java Development Kit (JDK) 17, 
+### **Run application using docker**
+* Install docker in your PC
+* Docker hub link - `https://hub.docker.com/r/siddiquidanish/fizz-buzz-server-app/tags`
+1. Pull docker image - `docker pull siddiquidanish/fizz-buzz-server-app:v1.0`
+2. Run docker image - `docker run -p 8080:8080 fizz-buzz-server-app:v1.0`
+
+### Setting up your local
+To build and run the project locally, follow these steps:
+### **Requirements for local setup**
+1. [ ] Java Development Kit (JDK) 17,
 2. [ ] Maven
 
-### Getting Started
-To build and run the project locally, follow these steps:
 ##### 1. Clone the repository:
     `git clone https://github.com/siddiquiDanish/fizz-buzz-server.git`
 ##### 2. Navigate to the project directory:
